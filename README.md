@@ -22,6 +22,9 @@ django-celery-demo
     sudo rabbitmqctl add_vhost tester_vhost
     sudo rabbitmqctl set_permissions -p tester_vhost tester ".*" ".*" "."
 
+单步用法
+===
+
 启动django
 ---
 
@@ -47,3 +50,13 @@ django-celery-demo
     ./manage.py celery flower --broker=amqp://tester:tester@localhost:5672/tester_vhost
 
 浏览器打开`http://localhost:5555/`
+
+简单用法
+===
+在这里你可以看到使用多个celeryd为没一个队列配置不同的进数目
+注意-n参数可以让你拥有多个worker
+
+    cd 到项目根目录
+    sudo ln -s $(pwd) /opt
+    cd /opt/django_celery_demo/supervisor
+    ./run_supervisor.sh
