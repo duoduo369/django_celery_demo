@@ -1,4 +1,6 @@
 *.pyc
 *.db
 *.sqlite3
+*.log
+*.pid
 celerybeat-schedule
