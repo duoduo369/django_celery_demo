@@ -22,6 +22,10 @@ django-celery-demo
     sudo rabbitmqctl add_vhost tester_vhost
     sudo rabbitmqctl set_permissions -p tester_vhost tester ".*" ".*" "."
 
+数据库建表
+---
+    python manage.py syncdb
+
 单步用法
 ===
 
