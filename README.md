@@ -64,3 +64,31 @@ django-celery-demo
     sudo ln -s $(pwd) /opt
     cd /opt/django_celery_demo/supervisor
     ./run_supervisor.sh
+
+    ./check_supervisor.sh 如果所有都在RUNNING这个状态下启动成功
+
+    否则先./kill_supervisor.sh 杀掉supervisor进程后
+    ps aux | grep python | grep 9000
+    ps aux | grep flower
+    看看是否有其他运行的进程，如果有则杀掉，重新./run_supervisor.sh
+
+其他事件
+===
+
+关于celery beat
+---
+celery beat是与定时任务有关的
+当你使用celery beat时需要启动beat,而主动触发(delay)则不需要
+
+测试关闭celery beat view主动触发是否可以处理任务
+
+    cd /opt/django_celery_demo/supervisor
+    ./check_supervisor.sh
+
+    进入supervisorctl后
+    stop celerybeat
+
+    curl localhost:9000/test_celery_app
+    或者浏览器输入 localhost:9000/test_celery_app
+
+    并在flower中 localhost:5555查看任务情况
